@@ -43,6 +43,7 @@ let logo_ascii = `
         /////////  ////// ///  ///   /////////   ///
                                     ///     ///
                                       //////
+                                      powered by Luigi Dashboard!
 
 `;
 console.log('\x1b[32m', logo_ascii, '\x1b[0m');
@@ -123,7 +124,12 @@ var params = {
     ['/public_client', '../client/public']
   ],
   logLevel: 0,
-  cors: true
+  cors: true,
+  proxy: [
+    ['/luigi-dashboard', 'http://localhost:8080'],
+    ['/dist/', 'http://localhost:8080/dist/'],
+    ['/node_modules/', 'http://localhost:8080/node_modules/']
+  ]
 };
 
 liveServer.start(params);
